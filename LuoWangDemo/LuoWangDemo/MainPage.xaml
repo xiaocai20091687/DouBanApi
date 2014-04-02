@@ -1,0 +1,80 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="LuoWangDemo.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:Coding4Fun.Toolkit.Controls;assembly=Coding4Fun.Toolkit.Controls"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="False">
+
+    <phone:PhoneApplicationPage.Resources>
+        <DataTemplate x:Key="LuoWangDataTemplate">
+            <StackPanel Background="#72aedc" Width="460" Height="120" Margin="0,0,0,10">
+                <TextBlock Foreground="White" FontSize="20" Text="{Binding CommentTitle}" Margin="20,15,0,10"/>
+                <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
+                    <TextBlock Foreground="White" FontSize="20" Text="{Binding CommentPeople}" Margin="-10,0,10,0"/>
+                    <TextBlock Foreground="White" FontSize="20" Text="{Binding CommentTime}" HorizontalAlignment="Right"/>
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+
+        <ItemsPanelTemplate x:Key="LuoWangItemsPanelTemplate">
+            <VirtualizingStackPanel Orientation="Vertical"></VirtualizingStackPanel>
+        </ItemsPanelTemplate>
+
+        <Style x:Key="White24Style" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="24"/>
+        </Style>
+
+        <Style x:Key="Blue24Style" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#72aedc"/>
+            <Setter Property="FontSize" Value="24"/>
+        </Style>
+
+        <DataTemplate x:Key="PivotHeaderDataTemplate">
+            <TextBlock Margin="-10,0,0,0" Text="{Binding}" Foreground="#72aedc"/>
+        </DataTemplate>
+
+        <ItemsPanelTemplate x:Key="MyInforItemsPanelTemplate">
+            <toolkit:WrapPanel />
+        </ItemsPanelTemplate>
+
+        <DataTemplate x:Key="MyInforDataTemplate">
+            <StackPanel Background="#FF72AEDC" Height="130"  Width="130" Margin="0,0,10,10">
+                <TextBlock Style="{StaticResource White24Style}" Text="{Binding Title}"/>
+                <TextBlock Style="{StaticResource White24Style}" Text="{Binding Count}"/>
+            </StackPanel>
+        </DataTemplate>
+    </phone:PhoneApplicationPage.Resources>
+
+    <!--LayoutRoot 是包含所有页面内容的根网格-->
+    <Grid x:Name="LayoutRoot" Background="White">
+        <phone:Pivot x:Name="LuoWang_Pivot" HeaderTemplate="{StaticResource PivotHeaderDataTemplate}" SelectionChanged="LuoWang_Pivot_OnSelectionChanged">
+            <phone:PivotItem Header="音评">
+                <ListBox x:Name="Music_LB" ItemTemplate="{StaticResource LuoWangDataTemplate}" ItemsSource="{Binding MusicCommentSource}" ItemsPanel="{StaticResource LuoWangItemsPanelTemplate}" SelectionChanged="Music_LB_OnSelectionChanged"/>
+            </phone:PivotItem>
+
+            <phone:PivotItem Header="影评">
+                <ListBox x:Name="Movie_LB" ItemTemplate="{StaticResource LuoWangDataTemplate}" ItemsSource="{Binding MovieCommentSource}" ItemsPanel="{StaticResource LuoWangItemsPanelTemplate}" SelectionChanged="Music_LB_OnSelectionChanged"/>
+            </phone:PivotItem>
+
+            <phone:PivotItem Header="书评">
+                <ListBox x:Name="Book_LB" ItemTemplate="{StaticResource LuoWangDataTemplate}" ItemsSource="{Binding BookCommentSource}" ItemsPanel="{StaticResource LuoWangItemsPanelTemplate}" SelectionChanged="Music_LB_OnSelectionChanged"/>
+            </phone:PivotItem>
+
+            <phone:PivotItem Header="最新评论">
+                <ListBox x:Name="RadioStation_LB" ItemsSource="{Binding NewCommentSource}" ItemTemplate="{StaticResource LuoWangDataTemplate}" ItemsPanel="{StaticResource LuoWangItemsPanelTemplate}" SelectionChanged="Music_LB_OnSelectionChanged"/>
+            </phone:PivotItem>
+        </phone:Pivot>
+
+    </Grid>
+</phone:PhoneApplicationPage>

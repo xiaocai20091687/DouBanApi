@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RequestUrl>
+  <MusicCommentUrl Url="http://www.douban.com/feed/review/music"/>
+  <MovieCommentUrl Url="http://www.douban.com/feed/review/movie"/>
+  <BookCommentUrl Url="http://www.douban.com/feed/review/book"/>
+  <NewCommentUrl Url="http://www.douban.com/feed/review/latest"/>
+  <SingleBookInfor Url="https://api.douban.com/v2/book/1220562"/>
+  <AutorizationCode Url="https://www.douban.com/service/auth2/auth?" />
+  <AccessToken Url="https://www.douban.com/service/auth2/token?"/>
+  <UserLogin Url="https://api.douban.com/v2/user/~me?"/>
+</RequestUrl>

@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Navigation;
+using LuoWangDemo.DataProvider;
+using Microsoft.Phone.Controls;
+using Microsoft.Phone.Shell;
+
+namespace LuoWangDemo.View
+{
+    public partial class LoginPage : PhoneApplicationPage
+    {
+        public LoginPage()
+        {
+            InitializeComponent();
+        }
+
+        private void Login_OnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/View/DouBanMidPage.xaml", UriKind.RelativeOrAbsolute));
+        }
+    }
+}
